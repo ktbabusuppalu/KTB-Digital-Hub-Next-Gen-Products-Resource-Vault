@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KTBDIGITAL SERVICE — Official Digital Product Vault & Repository</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #090d16;
+            color: #f1f5f9;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Effect */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-nav {
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8 0%, #3b82f6 50%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Background Animated Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+            pointer-events: none;
+        }
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: rgba(14, 165, 233, 0.18);
+            top: -100px;
+            left: -100px;
+            animation: float 12s infinite alternate ease-in-out;
+        }
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: rgba(59, 130, 246, 0.15);
+            bottom: -150px;
+            right: -100px;
+            animation: float 16s infinite alternate-reverse ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 60px) scale(1.1); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090d16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0ea5e9;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between relative selection:bg-sky-500 selection:text-white">
+
+    <!-- Background Glows -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            
+            <!-- Brand Identity -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <div class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-700/60 p-2 flex items-center justify-center shadow-lg shadow-sky-950/40 hover:scale-105 transition-transform duration-300">
+                    <!-- Brand Vector Badge Monogram -->
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <defs>
+                            <linearGradient id="kqGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#38bdf8" />
+                                <stop offset="50%" stop-color="#0284c7" />
+                                <stop offset="100%" stop-color="#1e3a8a" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M 20 15 L 35 15 L 35 85 L 20 85 Z" fill="url(#kqGrad)" />
+                        <path d="M 35 50 L 60 20 L 78 20 L 50 52 L 80 85 L 62 85 Z" fill="url(#kqGrad)" />
+                        <path d="M 60 25 A 25 25 0 1 1 50 70 A 25 25 0 0 1 60 25" fill="none" stroke="url(#kqGrad)" stroke-width="10" stroke-linecap="round" />
+                        <path d="M 55 55 L 75 85 L 65 88 L 58 72 L 50 78 Z" fill="#38bdf8" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-lg sm:text-xl font-extrabold tracking-wider text-white flex items-center gap-1.5">
+                        KTBDIGITAL<span class="text-sky-400">SERVICE</span>
+                    </h1>
+                    <p class="text-[10px] tracking-widest text-slate-400 uppercase font-semibold">Online Digital Office • Bengaluru</p>
+                </div>
+            </div>
+
+            <!-- Quick Action Buttons -->
+            <div class="flex items-center gap-3">
+                <button onclick="toggleModal()" class="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/60 text-xs font-semibold text-slate-200 transition-colors">
+                    <i class="fa-solid fa-circle-info text-sky-400"></i>
+                    <span>Access Instructions</span>
+                </button>
+
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-xs font-bold text-white shadow-lg shadow-sky-900/40 transition-all hover:scale-105">
+                    <i class="fa-brands fa-github text-sm"></i>
+                    <span class="hidden sm:inline">GitHub Hub</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero & GitHub Info Banner -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-6">
+        <div class="glass-card rounded-3xl p-6 sm:p-10 relative overflow-hidden shadow-2xl border border-slate-800">
+            <!-- Decorative Accent Line -->
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500"></div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Left Hero Text -->
+                <div class="lg:col-span-8 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-bold tracking-wide uppercase mb-4">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Official Payhip & GitHub Resource Catalog
+                    </div>
+
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
+                        Discover & Download Our <br class="hidden sm:inline" />
+                        <span class="gradient-text">Premium Digital Solutions</span>
+                    </h2>
+
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-6">
+                        From multi-script divine stotra audio guides to advanced business financial P&L engines. Explore, download, enter your provided password, and enjoy seamless access across all devices.
+                    </p>
+
+                    <!-- Steps Indicator Pill -->
+                    <div class="inline-flex flex-wrap items-center justify-center lg:justify-start gap-2 text-xs font-mono bg-slate-900/90 p-2.5 rounded-2xl border border-slate-800 text-slate-300">
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-sky-400 font-bold">Step 1</span> Click Link
+                        <i class="fa-solid fa-chevron-right text-[10px] text-slate-600"></i>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-sky-400 font-bold">Step 2</span> Download
+                        <i class="fa-solid fa-chevron-right text-[10px] text-slate-600"></i>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-sky-400 font-bold">Step 3</span> Enter Password
+                        <i class="fa-solid fa-chevron-right text-[10px] text-slate-600"></i>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-emerald-400 font-bold">Enjoy!</span>
+                    </div>
+                </div>
+
+                <!-- Right GitHub Link Box -->
+                <div class="lg:col-span-4 bg-slate-900/90 rounded-2xl p-6 border border-slate-700/60 flex flex-col justify-between shadow-xl">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-sky-400 text-xl border border-slate-700">
+                            <i class="fa-brands fa-github"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-bold text-white">GitHub Source Repository</h3>
+                            <p class="text-xs text-slate-400">Open-source pages & catalog host</p>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-slate-300 mb-5 leading-relaxed">
+                        Access our central GitHub repository to star, fork, inspect source code, or host this catalog via GitHub Pages.
+                    </p>
+
+                    <div class="space-y-2">
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 text-xs font-bold text-white transition-all">
+                            <i class="fa-solid fa-code-fork"></i>
+                            <span>Fork / View Repository</span>
+                        </a>
+                        <button onclick="copyText('https://github.com', 'GitHub Repository Link')" class="w-full flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs text-slate-400 hover:text-sky-400 transition-colors">
+                            <i class="fa-regular fa-copy"></i>
+                            <span>Copy Repository URL</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Filters & Search Header -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+            
+            <!-- Category Tabs -->
+            <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0">
+                <button onclick="filterCategory('all')" id="tab-all" class="category-tab px-4 py-2 rounded-xl text-xs font-bold transition-all bg-sky-500 text-white shadow-lg shadow-sky-500/20 shrink-0">
+                    <i class="fa-solid fa-border-all mr-1.5"></i> All Products (10)
+                </button>
+                <button onclick="filterCategory('devotional')" id="tab-devotional" class="category-tab px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-800/80 transition-all shrink-0">
+                    <i class="fa-solid fa-om mr-1.5 text-amber-400"></i> Devotional Audio (5)
+                </button>
+                <button onclick="filterCategory('business')" id="tab-business" class="category-tab px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-800/80 transition-all shrink-0">
+                    <i class="fa-solid fa-chart-line mr-1.5 text-emerald-400"></i> Business & Finance (5)
+                </button>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="relative w-full md:w-72">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search products or languages..." class="w-full bg-slate-950/80 border border-slate-800 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-sky-500 transition-colors">
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Grid -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 mb-12 flex-grow">
+        
+        <!-- Empty State Message -->
+        <div id="noResults" class="hidden text-center py-16 glass-card rounded-3xl my-6">
+            <i class="fa-solid fa-box-open text-4xl text-slate-600 mb-3"></i>
+            <h3 class="text-base font-bold text-slate-300">No matching products found</h3>
+            <p class="text-xs text-slate-500 mt-1">Try clearing your search query or switching categories.</p>
+        </div>
+
+        <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Cards generated dynamically via JavaScript -->
+        </div>
+    </main>
+
+    <!-- Access Instructions Modal -->
+    <div id="instructionModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glass-card max-w-md w-full rounded-3xl p-6 sm:p-8 border border-slate-700 shadow-2xl relative transform scale-95 transition-all duration-300" id="modalContainer">
+            
+            <button onclick="toggleModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center text-xs transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-key"></i>
+            </div>
+
+            <h3 class="text-lg font-bold text-white mb-2">How to Access Downloads</h3>
+            <p class="text-xs text-slate-300 leading-relaxed mb-6">
+                Follow these simple steps to unlock and enjoy your digital products from KTBDIGITAL SERVICE:
+            </p>
+
+            <div class="space-y-4 mb-6">
+                <div class="flex items-start gap-3 bg-slate-900/60 p-3 rounded-xl border border-slate-800">
+                    <span class="w-6 h-6 rounded-lg bg-sky-500 text-white font-bold text-xs flex items-center justify-center shrink-0">1</span>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-200">Click Product Link</h4>
+                        <p class="text-[11px] text-slate-400">Click "Access & Download" on any item card to open the secure Payhip store page.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3 bg-slate-900/60 p-3 rounded-xl border border-slate-800">
+                    <span class="w-6 h-6 rounded-lg bg-sky-500 text-white font-bold text-xs flex items-center justify-center shrink-0">2</span>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-200">Download Product File</h4>
+                        <p class="text-[11px] text-slate-400">Save the digital audio file, P&L spreadsheet, or interactive web app package.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3 bg-slate-900/60 p-3 rounded-xl border border-slate-800">
+                    <span class="w-6 h-6 rounded-lg bg-sky-500 text-white font-bold text-xs flex items-center justify-center shrink-0">3</span>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-200">Enter Your Password</h4>
+                        <p class="text-[11px] text-slate-400">Use the secret key/password provided with your order receipt or access pass.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3 bg-slate-900/60 p-3 rounded-xl border border-slate-800">
+                    <span class="w-6 h-6 rounded-lg bg-emerald-500 text-white font-bold text-xs flex items-center justify-center shrink-0">4</span>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-200">View, Hear & Enjoy!</h4>
+                        <p class="text-[11px] text-slate-400">Listen to high-definition audio, view full meanings, or run financial models seamlessly.</p>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="toggleModal()" class="w-full py-3 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold text-xs shadow-lg shadow-sky-900/40">
+                Got It! Proceed to Vault
+            </button>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 transform translate-y-20 opacity-0 transition-all duration-300 glass-card px-5 py-3 rounded-2xl border-l-4 border-sky-400 flex items-center gap-3 shadow-2xl z-50">
+        <i class="fa-solid fa-circle-check text-sky-400 text-base"></i>
+        <span id="toastMsg" class="text-xs font-medium text-slate-200">Link copied to clipboard!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="glass-nav py-8 mt-12 border-t border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+            <div class="flex items-center gap-2">
+                <span class="font-extrabold text-white">KTBDIGITAL SERVICE</span>
+                <span>•</span>
+                <span>Online Digital Office, Bengaluru</span>
+            </div>
+            <p class="font-medium text-slate-400">All Rights Reserved KTB Digital Services, Bengaluru.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Data & Logic -->
+    <script>
+        // Catalog Data
+        const products = [
+            {
+                id: 1,
+                title: "ಗಣಪತಿ ಪಂಚರತ್ನಂ — Kannada Version",
+                subtitle: "Ganapathy Pancharatnam in Kannada – Full Meaning & Audio Guide",
+                category: "devotional",
+                tag: "Kannada Audio Guide",
+                link: "https://payhip.com/b/JYh2e",
+                icon: "fa-solid fa-om",
+                badgeColor: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+                isAvailable: true
+            },
+            {
+                id: 2,
+                title: "শ্রী গণেশ পঞ্চরত্নম্ — Bangla Version",
+                subtitle: "Ganapathy Pancharatnam in Bengali with Meanings & Audio",
+                category: "devotional",
+                tag: "Bangla Edition",
+                link: "https://payhip.com/b/m46Nn",
+                icon: "fa-solid fa-om",
+                badgeColor: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+                isAvailable: true
+            },
+            {
+                id: 3,
+                title: "గణపతి పంచరత్నం — Telugu Version",
+                subtitle: "Ganapathy Pancharatnam in Telugu script with Audio Guide",
+                category: "devotional",
+                tag: "Telugu Edition",
+                link: "https://payhip.com/b/B0ikR",
+                icon: "fa-solid fa-om",
+                badgeColor: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+                isAvailable: true
+            },
+            {
+                id: 4,
+                title: "கணபதி பஞ்சரத்னம் — Tamil Version",
+                subtitle: "Ganapathy Pancharatnam in Tamil script & Audio Walkthrough",
+                category: "devotional",
+                tag: "Tamil Edition (Coming Soon)",
+                link: "#",
+                icon: "fa-solid fa-om",
+                badgeColor: "bg-slate-800 text-slate-400 border-slate-700",
+                isAvailable: false
+            },
+            {
+                id: 5,
+                title: "ഗണപതി പഞ്ചരത്നം — Malayalam Version",
+                subtitle: "Ganapathy Pancharatnam in Malayalam script & Audio Walkthrough",
+                category: "devotional",
+                tag: "Malayalam Edition",
+                link: "https://payhip.com/b/gB8Jl",
+                icon: "fa-solid fa-om",
+                badgeColor: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+                isAvailable: true
+            },
+            {
+                id: 6,
+                title: "All In One Any Business Any Time P & L Engine",
+                subtitle: "Universal profit & loss calculation system for instant financial clarity.",
+                category: "business",
+                tag: "Universal P&L Engine",
+                link: "https://payhip.com/b/tJzlo",
+                icon: "fa-solid fa-calculator",
+                badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+                isAvailable: true
+            },
+            {
+                id: 7,
+                title: "MultiYear Metrics: Long-Term Business Financial P&L Engine",
+                subtitle: "Multi-year strategic financial modeling and performance tracking software.",
+                category: "business",
+                tag: "Multi-Year Forecaster",
+                link: "https://payhip.com/b/TYctl",
+                icon: "fa-solid fa-chart-line",
+                badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+                isAvailable: true
+            },
+            {
+                id: 8,
+                title: "YearAhead Business Financial Modeler: 12-Month Forecaster",
+                subtitle: "12-month operational forecaster for budgeting, cash management & growth.",
+                category: "business",
+                tag: "12-Month Modeler",
+                link: "https://payhip.com/b/70qAa",
+                icon: "fa-solid fa-calendar-check",
+                badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+                isAvailable: true
+            },
+            {
+                id: 9,
+                title: "MonthEnd Viability Metrics: Monthly Operational P&L Engine",
+                subtitle: "Monthly operational metric tracker for quick profit and loss analysis.",
+                category: "business",
+                tag: "Monthly Viability",
+                link: "https://payhip.com/b/1MQlc",
+                icon: "fa-solid fa-chart-pie",
+                badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+                isAvailable: true
+            },
+            {
+                id: 10,
+                title: "CashRunway Pro: Daily & Weekly Business Survival Tool",
+                subtitle: "Granular cash runway estimator to track daily/weekly burn rate and solvency.",
+                category: "business",
+                tag: "Survival & Burn Tool",
+                link: "https://payhip.com/b/0lO3X",
+                icon: "fa-solid fa-vault",
+                badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+                isAvailable: true
+            }
+        ];
+
+        let currentCategory = 'all';
+
+        // Render Product Cards
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            const noResults = document.getElementById('noResults');
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+
+            const filtered = products.filter(p => {
+                const matchesCategory = currentCategory === 'all' || p.category === currentCategory;
+                const matchesSearch = p.title.toLowerCase().includes(query) || 
+                                      p.subtitle.toLowerCase().includes(query) || 
+                                      p.tag.toLowerCase().includes(query);
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            }
+
+            noResults.classList.add('hidden');
+
+            grid.innerHTML = filtered.map(product => `
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between hover:border-slate-700 transition-all duration-300 group hover:-translate-y-1 shadow-xl">
+                    <div>
+                        <!-- Badge & Icon Header -->
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <span class="text-[11px] font-bold px-3 py-1 rounded-full border ${product.badgeColor}">
+                                ${product.tag}
+                            </span>
+                            <div class="w-8 h-8 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-400 group-hover:text-sky-400 transition-colors">
+                                <i class="${product.icon} text-xs"></i>
+                            </div>
+                        </div>
+
+                        <!-- Product Title & Subtitle -->
+                        <h3 class="text-base font-bold text-white mb-2 leading-snug group-hover:text-sky-300 transition-colors">
+                            ${product.title}
+                        </h3>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-6">
+                            ${product.subtitle}
+                        </p>
+                    </div>
+
+                    <!-- Footer Actions -->
+                    <div class="pt-4 border-t border-slate-800/80 flex items-center gap-2">
+                        ${product.isAvailable ? `
+                            <a href="${product.link}" target="_blank" rel="noopener noreferrer" class="flex-grow flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-bold text-xs shadow-lg shadow-sky-950/50 transition-all">
+                                <span>Access & Download</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                            <button onclick="copyText('${product.link}', '${product.title.replace(/'/g, "\\'")}')" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/60 transition-colors" title="Copy Product Link">
+                                <i class="fa-regular fa-copy text-xs"></i>
+                            </button>
+                        ` : `
+                            <button disabled class="w-full py-2.5 px-4 rounded-xl bg-slate-800/50 border border-slate-800 text-slate-500 font-bold text-xs cursor-not-allowed">
+                                Link Coming Soon
+                            </button>
+                        `}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Category Filter Function
+        function filterCategory(cat) {
+            currentCategory = cat;
+            
+            // Update Tab Styling
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('bg-sky-500', 'text-white', 'shadow-lg', 'shadow-sky-500/20');
+                tab.classList.add('text-slate-400', 'hover:text-white', 'hover:bg-slate-800/80');
+            });
+
+            const activeTab = document.getElementById(`tab-${cat}`);
+            if (activeTab) {
+                activeTab.classList.remove('text-slate-400', 'hover:text-white', 'hover:bg-slate-800/80');
+                activeTab.classList.add('bg-sky-500', 'text-white', 'shadow-lg', 'shadow-sky-500/20');
+            }
+
+            renderProducts();
+        }
+
+        // Search Input Function
+        function handleSearch() {
+            renderProducts();
+        }
+
+        // Copy Text Utility
+        function copyText(text, name) {
+            const tempInput = document.createElement("input");
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            showToast(`Copied link for ${name}!`);
+        }
+
+        // Toast Notification Handler
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+
+            toastMsg.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Instruction Modal Toggle
+        function toggleModal() {
+            const modal = document.getElementById('instructionModal');
+            const container = document.getElementById('modalContainer');
+
+            if (modal.classList.contains('opacity-0')) {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modal.classList.add('opacity-100', 'pointer-events-auto');
+                container.classList.remove('scale-95');
+                container.classList.add('scale-100');
+            } else {
+                modal.classList.remove('opacity-100', 'pointer-events-auto');
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                container.classList.remove('scale-100');
+                container.classList.add('scale-95');
+            }
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+        });
+    </script>
+</body>
+</html>
